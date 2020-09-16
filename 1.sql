@@ -31,4 +31,6 @@ use aslab;
 -- alter table Instructor_39 drop constraint chk_salary;
 -- alter table Student_39 alter column name varchar(20) null;
 
-exec sp_rename 'Takes_39', 'Subject_39';
+-- exec sp_rename 'Takes_39', 'Subject_39';
+
+SELECT * FROM Subject_39;
