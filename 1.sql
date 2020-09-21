@@ -33,4 +33,11 @@ use aslab;
 
 -- exec sp_rename 'Takes_39', 'Subject_39';
 
+SELECT * FROM Classroom_39;
+SELECT * FROM Department_39;
+SELECT * FROM Course_39;
+SELECT * FROM Instructor_39;
+SELECT * FROM Section_39;
+SELECT * FROM Student_39;
+SELECT * FROM Teaches_39;
 SELECT * FROM Subject_39;
