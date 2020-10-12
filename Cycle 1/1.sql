@@ -1,4 +1,6 @@
+-- create database aslab;
 use aslab;
+
 -- create table Classroom_39 (building varchar(20), room_number int, capacity int, primary key (room_number));
 -- create table Department_39 (dept_Name varchar(20), building varchar(20), budget int, primary key (dept_name));
 -- create table Course_39 (course_id varchar(10), title varchar(40), dept_name varchar(20), credits int, primary key (course_id));

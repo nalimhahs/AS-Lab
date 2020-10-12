@@ -1,3 +1,5 @@
+-- use aslab;
+
 -- UPDATE Student_39
 -- SET name = 'Mozart'
 -- WHERE id = 45678;
