@@ -62,3 +62,7 @@
 --     end
 -- end
 
+drop trigger course_update;
+drop trigger instructor_update_trigger;
+drop trigger course_credit_check;
+drop trigger takes_delete_check;

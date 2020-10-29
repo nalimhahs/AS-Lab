@@ -121,3 +121,20 @@ end
 ```
 Commands completed successfully. 
 ```
+
+### 5.
+
+#### _Query_:
+
+```
+drop trigger course_update;
+drop trigger instructor_update_trigger;
+drop trigger course_credit_check;
+drop trigger takes_delete_check;
+```
+
+#### _Output:_
+
+```
+Commands completed successfully. 
+```
