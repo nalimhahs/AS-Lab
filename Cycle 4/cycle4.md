@@ -142,7 +142,7 @@ Commands completed successfully.
 
 ## Experiment 2:
 
-### **Triggers**
+### **Cursors**
 
 1. Write a PL/SQL program to create a cursor that displays the name, department and salary of each instructor in the INSTRUCTOR table whose salary is less than that specified by a passed-in parameter value.
 2. Write a PL/SQL program to create a cursor that displays the department name, number of instructors and number of courses listed in each department.
