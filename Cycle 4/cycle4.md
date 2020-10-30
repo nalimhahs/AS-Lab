@@ -138,3 +138,128 @@ drop trigger takes_delete_check;
 ```
 Commands completed successfully. 
 ```
+
+
+## Experiment 2:
+
+### **Triggers**
+
+1. Write a PL/SQL program to create a cursor that displays the name, department and salary of each instructor in the INSTRUCTOR table whose salary is less than that specified by a passed-in parameter value.
+2. Write a PL/SQL program to create a cursor that displays the department name, number of instructors and number of courses listed in each department.
+3. Write a PL/SQL program to display instructor id, name and salary of 5 highest paid instructors using cursor.
+4. Write a PL/SQL program to increase salary of instructors in department specified by a parameter using cursor. The salary increase is 20% for instructors making less than 80,000 and 12% for the employees making 80,000 or more. 
+
+### 1.
+
+#### _Query_:
+
+```
+DECLARE
+    cursor inst is
+        select * from Instructor_39;
+    sal integer := 50000;
+BEGIN
+    FOR n IN inst LOOP
+        if n.salary < sal
+        then
+            dbms_output.put_line(n.name || n.dept_name || n.salary);
+        end if;
+    END LOOP;
+END;
+```
+
+#### _Output:_
+
+```
+Statement processed.
+MozartMusic40000
+```
+
+### 2.
+
+#### _Query_:
+
+```
+DECLARE
+    cursor dept is
+        select dept_name from Department_39;
+    inst integer := 0;
+    course integer := 0;
+BEGIN
+    FOR n IN dept LOOP
+        select count(id) into inst from Instructor_39 where dept_name = n.dept_name;
+        select count(course_id) into course from Course_39 where dept_name = n.dept_name;
+        dbms_output.put_line(n.dept_name || inst || course);
+    END LOOP;
+END;
+```
+
+### 3.
+
+#### _Query_:
+
+```
+DECLARE
+    cursor inst is
+        select * from Instructor_39 order by salary desc;
+    cnt integer := 0;
+BEGIN
+    FOR n IN inst LOOP
+        if cnt < 5
+        then
+            dbms_output.put_line(n.id || n.name || n.salary);
+            cnt := cnt + 1;
+        end if;
+    END LOOP;
+END;
+```
+
+#### _Output:_
+
+```
+Statement processed.
+22222Einstein95000
+83821Brandt92000
+12121Wu90000
+33456Gold87000
+76543Singh80000
+```
+
+### 4.
+
+#### _Query_:
+
+```
+DECLARE
+    cursor inst is
+        select * from Instructor_39 order by salary desc;
+BEGIN
+    FOR n IN inst LOOP
+        if n.salary < 80000
+        then
+            update Instructor_39 set salary = 1.2 * salary where id = n.id;
+        elsif n.salary >= 80000
+        then
+            update Instructor_39 set salary = 1.12 * salary where id = n.id;
+        end if;
+    END LOOP;
+END;
+```
+
+#### _Output:_
+
+```
+ID	    NAME	    DEPT_NAME	SALARY
+22222	Einstein	Physics	    95000
+45565	Katz	    Comp. Sci.	75000
+58583	Califieri	History	    62000
+10101	Srinivasan	Comp. Sci.	65000
+15151	Mozart	    Music	    40000
+33456	Gold	    Physics	    87000
+76543	Singh	    Finance	    80000
+76766	Crick	    Biology	    72000
+83821	Brandt	    Comp. Sci.	92000
+98345	Kim     	Elec. Eng.	80000
+31343	El Said	    History	    60000
+12121	Wu	        Finance	    90000
+```
